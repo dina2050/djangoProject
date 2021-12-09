@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+    <form method="post" class="col-lg-6 offset-lg-4">
+    {% csrf_token %}
+        <div class="mb-3">
+            {{ form.username|as_crispy_field }}
+  </div>
+<div class="mb-3">
+    {{ form.password|as_crispy_field }}
+  </div>
+
+    <input class="btn btn-primary" type="submit" value="Se connecter">
+    </form>
+
+ {% if form.errors %}
+    <p>Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez réessayer.</p>
+    {% endif %}
+
+{% endblock %}
